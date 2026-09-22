@@ -3,6 +3,7 @@ import { Outlet, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
+import { AppSidebar } from '../components/app-sidebar'
 import '../styles.css'
 
 export const Route = createRootRoute({
@@ -12,7 +13,10 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <Outlet />
+      <div className="flex h-full">
+        <AppSidebar />
+        <Outlet />
+      </div>
       <TanStackDevtools
         config={{
           position: 'bottom-right',
