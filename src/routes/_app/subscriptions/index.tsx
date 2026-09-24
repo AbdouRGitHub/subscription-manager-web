@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Plus, Search } from 'lucide-react'
 import Button from '#/components/button.tsx'
 
-export const Route = createFileRoute('/subscriptions/')({
+export const Route = createFileRoute('/_app/subscriptions/')({
   component: RouteComponent,
 })
 

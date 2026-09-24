@@ -10,43 +10,58 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SubscriptionsIndexRouteImport } from './routes/subscriptions/index'
+import { Route as AppRouteRouteImport } from './routes/_app/route'
+import { Route as AppDashboardIndexRouteImport } from './routes/_app/dashboard/index'
+import { Route as AppSubscriptionsIndexRouteImport } from './routes/_app/subscriptions/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SubscriptionsIndexRoute = SubscriptionsIndexRouteImport.update({
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDashboardIndexRoute = AppDashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppSubscriptionsIndexRoute = AppSubscriptionsIndexRouteImport.update({
   id: '/subscriptions/',
   path: '/subscriptions/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/subscriptions/': typeof SubscriptionsIndexRoute
+  '/dashboard/': typeof AppDashboardIndexRoute
+  '/subscriptions/': typeof AppSubscriptionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/subscriptions': typeof SubscriptionsIndexRoute
+  '/dashboard': typeof AppDashboardIndexRoute
+  '/subscriptions': typeof AppSubscriptionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/subscriptions/': typeof SubscriptionsIndexRoute
+  '/_app': typeof AppRouteRouteWithChildren
+  '/_app/dashboard/': typeof AppDashboardIndexRoute
+  '/_app/subscriptions/': typeof AppSubscriptionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/subscriptions/'
+  fullPaths: '/' | '/dashboard/' | '/subscriptions/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/subscriptions'
-  id: '__root__' | '/' | '/subscriptions/'
+  to: '/' | '/dashboard' | '/subscriptions'
+  id: '__root__' | '/' | '/_app' | '/_app/dashboard/' | '/_app/subscriptions/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SubscriptionsIndexRoute: typeof SubscriptionsIndexRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -58,19 +73,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/subscriptions/': {
-      id: '/subscriptions/'
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/dashboard/': {
+      id: '/_app/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof AppDashboardIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/subscriptions/': {
+      id: '/_app/subscriptions/'
       path: '/subscriptions'
       fullPath: '/subscriptions/'
-      preLoaderRoute: typeof SubscriptionsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppSubscriptionsIndexRouteImport
+      parentRoute: typeof AppRouteRoute
     }
   }
 }
 
+interface AppRouteRouteChildren {
+  AppDashboardIndexRoute: typeof AppDashboardIndexRoute
+  AppSubscriptionsIndexRoute: typeof AppSubscriptionsIndexRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppDashboardIndexRoute: AppDashboardIndexRoute,
+  AppSubscriptionsIndexRoute: AppSubscriptionsIndexRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SubscriptionsIndexRoute: SubscriptionsIndexRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

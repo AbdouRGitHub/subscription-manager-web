@@ -1,43 +1,65 @@
-import { Link, useRouterState } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import { Calendar, House, Settings, Wallet } from 'lucide-react'
+import { cva } from 'class-variance-authority'
+import { Logo } from '#/components/logo.tsx'
 
-const baseLinkClassName =
-  'flex items-center gap-x-3 transition-colors hover:text-accent'
-
+const baseLinkClassName = cva(
+  'hover:text-accent text-muted-foreground flex w-full items-center gap-x-3 rounded-xl px-2 py-3 transition-colors',
+)
 export function AppSidebar() {
-  const pathname = useRouterState({
-    select: (state) => state.location.pathname,
-  })
-  const dashboardIsActive = pathname === '/'
-  const subscriptionsIsActive = pathname.startsWith('/subscriptions')
-
   return (
     <div className="border-sidebar-border bg-sidebar flex w-60 shrink-0 flex-col items-center justify-start gap-5 border px-6 py-3">
-      <div>
-        <img src="/assets/logo.png" alt="logo" width={150} />
+      <div className="m-auto w-30">
+        <Logo />
       </div>
       <aside className="w-full flex-1">
         <nav className="flex h-full w-full flex-col items-start justify-start gap-y-10 pt-10">
           <Link
-            to="/"
+            to="/dashboard"
             activeOptions={{ exact: true }}
-            className={`${baseLinkClassName} ${dashboardIsActive ? 'text-accent' : 'text-muted-foreground'}`}
+            activeProps={{
+              className: 'bg-surface-info',
+            }}
+            className={`${baseLinkClassName()}`}
           >
-            <House />
-            <span className="text-left text-sm font-bold">Vue d'ensemble</span>
+            {({ isActive }) => {
+              return (
+                <>
+                  <House className={isActive ? 'text-accent' : undefined} />
+                  <span
+                    className={`text-left text-sm font-bold ${isActive ? 'text-accent' : ''}`}
+                  >
+                    Vue d'ensemble
+                  </span>
+                </>
+              )
+            }}
           </Link>
           <Link
             to="/subscriptions"
-            className={`${baseLinkClassName} ${subscriptionsIsActive ? 'text-accent' : 'text-muted-foreground'}`}
+            activeProps={{
+              className: 'bg-surface-info',
+            }}
+            className={`${baseLinkClassName()}`}
           >
-            <Wallet />
-            <span className="text-sm font-bold">Abonnements</span>
+            {({ isActive }) => {
+              return (
+                <>
+                  <Wallet className={isActive ? 'text-accent' : undefined} />
+                  <span
+                    className={`text-sm font-bold ${isActive ? 'text-accent' : ''}`}
+                  >
+                    Abonnements
+                  </span>
+                </>
+              )
+            }}
           </Link>
-          <span className={`${baseLinkClassName} text-muted-foreground`}>
+          <span className={`${baseLinkClassName()} text-muted-foreground`}>
             <Calendar />
             <span className="text-sm font-bold">Calendrier</span>
           </span>
-          <span className={`${baseLinkClassName} text-muted-foreground`}>
+          <span className={`${baseLinkClassName()} text-muted-foreground`}>
             <Settings />
             <span className="text-sm font-bold">Paramètres</span>
           </span>
