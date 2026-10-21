@@ -2,8 +2,12 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Plus } from 'lucide-react'
 import Button from '#/components/button.tsx'
 import Card from '#/components/card.tsx'
+import { getOverview } from '#/features/dashboard/api/dashboard.api.ts'
 
-export const Route = createFileRoute('/_app/dashboard/')({ component: DashBoard })
+export const Route = createFileRoute('/_app/dashboard/')({
+  component: DashBoard,
+  loader: getOverview,
+})
 
 function DashBoard() {
   return (
@@ -21,7 +25,9 @@ function DashBoard() {
         </div>
       </div>
       <div className="grid h-full w-full grid-cols-3 grid-rows-2 gap-4">
-        <Card variant="info" />
+        <Card variant="info" className="p-4">
+
+        </Card>
         <Card className="col-span-2" />
         <Card className="col-span-2" />
         <div className="grid grid-rows-[2fr_1fr] gap-6 rounded-2xl">

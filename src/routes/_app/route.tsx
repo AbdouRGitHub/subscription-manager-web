@@ -8,8 +8,10 @@ export const Route = createFileRoute('/_app')({
 function RouteComponent() {
   return (
     <>
-      <AppSidebar />
-      <Outlet />
+      <div className="h-full flex">
+        <AppSidebar />
+        <Outlet />
+      </div>
     </>
   )
 }

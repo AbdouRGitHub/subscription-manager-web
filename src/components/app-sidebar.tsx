@@ -8,12 +8,12 @@ const baseLinkClassName = cva(
 )
 export function AppSidebar() {
   return (
-    <div className="border-sidebar-border bg-sidebar flex w-60 shrink-0 flex-col items-center justify-start gap-5 border px-6 py-3">
-      <div className="m-auto w-30">
+    <div className="border-sidebar-border bg-sidebar flex h-full w-60 shrink-0 flex-col items-center justify-start gap-5 border px-6 py-3">
+      <div className="m-auto w-30 shrink-0">
         <Logo />
       </div>
-      <aside className="w-full flex-1">
-        <nav className="flex h-full w-full flex-col items-start justify-start gap-y-10 pt-10">
+      <aside className="w-full flex-1 overflow-y-auto">
+        <nav className="flex w-full flex-col items-start justify-start gap-y-10 pt-10">
           <Link
             to="/dashboard"
             activeOptions={{ exact: true }}
@@ -65,7 +65,7 @@ export function AppSidebar() {
           </span>
         </nav>
       </aside>
-      <div className="border-sidebar-border flex w-full border-t-2">
+      <div className="border-sidebar-border flex w-full shrink-0 border-t-2">
         <p> Profile </p>
       </div>
     </div>
