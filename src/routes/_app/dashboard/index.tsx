@@ -3,6 +3,8 @@ import { Plus } from 'lucide-react'
 import Button from '#/components/button.tsx'
 import Card from '#/components/card.tsx'
 import { getOverview } from '#/features/dashboard/api/dashboard.api.ts'
+import { MonthlyExpensesStats } from '#/features/dashboard/components/MonthlyExpensesStats.tsx'
+import type { Dashboard } from '#/features/dashboard/api/dashboard.types.ts'
 
 export const Route = createFileRoute('/_app/dashboard/')({
   component: DashBoard,
@@ -10,6 +12,8 @@ export const Route = createFileRoute('/_app/dashboard/')({
 })
 
 function DashBoard() {
+  const data: Dashboard = Route.useLoaderData()
+  console.log(data)
   return (
     <main className="flex h-full w-full flex-col items-start justify-start gap-y-3 px-25 pt-7 pb-10">
       <span className="text-muted-foreground text-sm">Mardi 15 septembre</span>
@@ -25,8 +29,11 @@ function DashBoard() {
         </div>
       </div>
       <div className="grid h-full w-full grid-cols-3 grid-rows-2 gap-4">
-        <Card variant="info" className="p-4">
-
+        <Card variant="info">
+          <MonthlyExpensesStats
+            monthlyExpenses={data.monthlyExpenses}
+            activeSubscriptions={data.activeSubscriptions}
+          />
         </Card>
         <Card className="col-span-2" />
         <Card className="col-span-2" />
