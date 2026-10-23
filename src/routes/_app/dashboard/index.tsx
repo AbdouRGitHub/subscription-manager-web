@@ -5,6 +5,8 @@ import Card from '#/components/card.tsx'
 import { getOverview } from '#/features/dashboard/api/dashboard.api.ts'
 import { MonthlyExpensesStats } from '#/features/dashboard/components/MonthlyExpensesStats.tsx'
 import type { Dashboard } from '#/features/dashboard/api/dashboard.types.ts'
+import { AnnualExpensesStats } from '#/features/dashboard/components/AnnualExpensesStats.tsx'
+import { MostExpensiveSubscription } from '#/features/dashboard/components/MostExpensiveSubscription.tsx'
 
 export const Route = createFileRoute('/_app/dashboard/')({
   component: DashBoard,
@@ -28,19 +30,23 @@ function DashBoard() {
           </Button>
         </div>
       </div>
-      <div className="grid h-full w-full grid-cols-3 grid-rows-2 gap-4">
-        <Card variant="info">
+      <div className="grid min-h-0 w-full flex-1 grid-cols-6 grid-rows-[minmax(0,1fr)_minmax(0,2fr)] gap-4">
+        <Card variant="info" className="border-border col-span-2 border">
           <MonthlyExpensesStats
             monthlyExpenses={data.monthlyExpenses}
             activeSubscriptions={data.activeSubscriptions}
           />
         </Card>
-        <Card className="col-span-2" />
-        <Card className="col-span-2" />
-        <div className="grid grid-rows-[2fr_1fr] gap-6 rounded-2xl">
-          <Card variant="danger" />
-          <Card variant="success" />
-        </div>
+        <Card variant="success" className="border-border col-span-2 border">
+          <AnnualExpensesStats annualExpenses={data.annualExpenses} />
+        </Card>
+        <Card variant="danger" className="border-border col-span-2 border">
+          <MostExpensiveSubscription
+            mostExpensiveSubscription={data.mostExpensiveSubscription[0]}
+          />
+        </Card>
+        <Card className="border-border col-span-3 border" />
+        <Card className="border-border col-span-3 border" />
       </div>
     </main>
   )
