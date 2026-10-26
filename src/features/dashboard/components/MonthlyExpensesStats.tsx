@@ -8,8 +8,8 @@ export function MonthlyExpensesStats({
   activeSubscriptions: number
 }) {
   return (
-    <div className="flex h-full min-w-0 flex-col gap-y-3 p-4 sm:p-5">
-      <span className="text-xl leading-tight font-bold">
+    <div className="flex h-full flex-col gap-y-3 p-4 sm:p-5">
+      <span className="text-2xl leading-tight font-bold">
         Dépenses mensuelles
       </span>
       <span className="text-accent flex min-w-0 flex-col text-left text-4xl leading-none font-black tracking-tight">

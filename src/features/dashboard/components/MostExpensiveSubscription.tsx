@@ -7,8 +7,8 @@ export function MostExpensiveSubscription({
   mostExpensiveSubscription: Subscriptions
 }) {
   return (
-    <div className="flex h-full min-w-0 flex-col gap-y-3 p-4 sm:p-5">
-      <span className="text-xl leading-tight font-bold">Le plus cher</span>
+    <div className="flex h-full flex-col gap-y-3 p-4 sm:p-5">
+      <span className="text-2xl leading-tight font-bold">Le plus cher</span>
       <div className="flex flex-col gap-y-1">
         <span className="text-xl font-black">
           {mostExpensiveSubscription.name}
@@ -17,7 +17,7 @@ export function MostExpensiveSubscription({
           {mostExpensiveSubscription.price?.toString().replace('.', ',')} € /
           mois
         </span>
-        <span className="inline-flex w-full items-center gap-x-1 text-base leading-tight text-blue-500">
+        <span className="inline-flex w-full cursor-pointer items-center gap-x-1 text-base leading-tight text-blue-500 select-none">
           Voir l'abonnement <ArrowRight size={20} />
         </span>
       </div>
