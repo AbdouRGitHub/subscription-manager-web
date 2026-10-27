@@ -43,6 +43,16 @@ body {
   font-style: normal;
 }
 
+@theme {
+  --animate-category-scroll: category-scroll 18s linear infinite;
+
+  @keyframes category-scroll {
+    to {
+      transform: translateY(-50%);
+    }
+  }
+}
+
 :root {
   --font-family-sans: 'Nunito';
 
