@@ -11,11 +11,10 @@ export function MonthlyExpensesByCategory({
   }[]
 }) {
   return (
-    <div className="flex h-full flex-col gap-y-1 p-4 sm:p-5">
-      <span className="text-2xl leading-tight font-bold">
+    <div className="flex h-full flex-col gap-y-3 p-4 sm:p-5">
+      <span className="text-lg leading-tight font-bold">
         Répartition par catégorie
       </span>
-      <span className="text-accent text-sm">Dépensenses mensuelles</span>
       <MonthlyExpensesByCategoryCharts
         monthlyExpensesByCategory={monthlyExpensesByCategory}
       />

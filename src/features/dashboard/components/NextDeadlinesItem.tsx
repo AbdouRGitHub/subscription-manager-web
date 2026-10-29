@@ -1,6 +1,5 @@
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
-import { ChevronRight } from 'lucide-react'
 
 export function NextDeadlinesItem({
   name,
@@ -20,16 +19,16 @@ export function NextDeadlinesItem({
     .toUpperCase()
 
   return (
-    <div className="flex justify-between gap-1">
+    <div className="flex shrink-0 justify-between gap-1">
       <div className="flex min-w-0 items-center gap-3">
         <div
           aria-hidden="true"
-          className="text-muted-foreground flex size-11 shrink-0 items-center justify-center rounded-full bg-[#dcd9fc] text-lg font-extrabold"
+          className="text-muted-foreground bg-icon-purple-background flex size-10 shrink-0 items-center justify-center rounded-xl text-lg font-extrabold"
         >
           {initials}
         </div>
         <div className="flex min-w-0 flex-col gap-1">
-          <div className="text-base font-bold wrap-break-word">{name}</div>
+          <div className="text-sm font-semibold wrap-break-word">{name}</div>
           <div className="text-accent text-xs">
             <span>
               Renouvellement le
@@ -40,8 +39,8 @@ export function NextDeadlinesItem({
           </div>
         </div>
       </div>
-      <div className="flex shrink-0 items-center gap-3 text-lg font-medium whitespace-nowrap">
-        {price} € <ChevronRight className="text-accent cursor-pointer" />
+      <div className="flex shrink-0 items-center gap-3 text-sm font-bold whitespace-nowrap">
+        {price} €
       </div>
     </div>
   )

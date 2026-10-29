@@ -7,8 +7,8 @@ export function NextDeadlines({
   nextDeadlines: Subscriptions[]
 }) {
   return (
-    <div className="flex h-full flex-col gap-y-3 p-4 sm:p-5">
-      <span className="text-2xl leading-tight font-bold">
+    <div className="flex h-full min-h-0 flex-col gap-y-2 p-4 sm:p-5">
+      <span className="shrink-0 text-lg leading-tight font-bold">
         Prochaines échéances
       </span>
       <NextDeadlinesList nextDeadlines={nextDeadlines} />

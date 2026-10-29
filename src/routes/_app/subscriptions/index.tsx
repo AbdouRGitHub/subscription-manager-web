@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Plus, Search } from 'lucide-react'
+import { CirclePlus, Search } from 'lucide-react'
 import Button from '#/components/Button.tsx'
 
 export const Route = createFileRoute('/_app/subscriptions/')({
@@ -13,7 +13,7 @@ function RouteComponent() {
         <h1 className="text-4xl font-extrabold">Abonnements</h1>
         <div className="flex flex-col items-center justify-center">
           <Button variant={'primary'} onClick={() => {}}>
-            <Plus size={30} strokeWidth={3} />
+            <CirclePlus size={30} strokeWidth={3} />
             <span className="text-sm">Ajouter un abonnement</span>
           </Button>
         </div>
@@ -24,7 +24,7 @@ function RouteComponent() {
         <span className="text-xl font-bold">480,23€</span>
         <span className="text-muted-foreground">/ mois</span>
       </span>
-      <div className="text-p flex h-full w-full flex-col gap-x-5">
+      <div className="bg-card flex h-full w-full flex-col gap-x-5">
         <div className="border-border bg-surface flex h-full flex-col items-start justify-start rounded-xl border p-2">
           <div className="flex w-full">
             <div className="border-border text-muted-foreground flex items-center gap-x-2 rounded-xl border px-2 py-2">

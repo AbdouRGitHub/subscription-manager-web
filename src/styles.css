@@ -18,10 +18,7 @@ body,
   --color-foreground: var(--foreground);
   --color-muted-foreground: var(--muted-foreground);
 
-  --color-surface: var(--surface);
-  --color-surface-info: var(--surface-info);
-  --color-surface-danger: var(--surface-danger);
-  --color-surface-success: var(--surface-success);
+  --color-card: var(--card);
 
   --color-button: var(--button-background);
   --color-button-foreground: var(--button-foreground);
@@ -31,6 +28,12 @@ body,
 
   --color-sidebar: var(--sidebar);
   --color-sidebar-border: var(--sidebar-border);
+
+  --color-icon-purple: var(--icon-purple);
+  --color-icon-purple-background: var(--icon-purple-background);
+
+  --color-icon-green: var(--icon-green);
+  --color-icon-green-background: var(--icon-green-background);
 }
 
 body {
@@ -56,21 +59,30 @@ body {
 :root {
   --font-family-sans: 'Nunito';
 
-  --background: #faf6ee;
-  --foreground: #08082a;
-  --muted-foreground: #5260bc;
+  /* Fond général et textes */
+  --background: #090a0d;
+  --foreground: #f4f3fa;
+  --muted-foreground: #a5aec8;
 
-  --surface: #fefdfd;
-  --surface-info: #ecf5fd;
-  --surface-danger: #faecea;
-  --surface-success: #e3f2e9;
+  /* Cartes, champs et états */
+  --card: #101116;
 
-  --button-background: #2c63f5;
+  /* Bouton principal */
+  --button-background: #4925f5;
   --button-foreground: #ffffff;
 
-  --accent: #0070f3;
-  --border: #dfe3ec;
+  /* Liens et éléments actifs */
+  --accent: #7954ff;
+  --border: #272a34;
 
-  --sidebar: rgba(255, 255, 255, 0.72);
-  --sidebar-border: var(--border);
+  /* Navigation */
+  --sidebar: #0e0f14;
+  --sidebar-border: #242630;
+
+  /* Icônes */
+  --icon-purple: #7456f6;
+  --icon-purple-background: #1c1a2b;
+
+  --icon-green: #55d197;
+  --icon-green-background: #1b2b24;
 }

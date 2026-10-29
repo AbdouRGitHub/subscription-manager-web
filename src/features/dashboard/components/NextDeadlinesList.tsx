@@ -7,8 +7,8 @@ export function NextDeadlinesList({
   nextDeadlines: Subscriptions[]
 }) {
   return (
-    <div className="mt-2 flex h-full flex-col justify-between gap-1">
-      {nextDeadlines.map((subscription) => (
+    <div className="mt-2 flex min-h-0 flex-1 flex-col gap-7 overflow-y-auto">
+      {nextDeadlines.slice(0, 4).map((subscription) => (
         <NextDeadlinesItem
           key={subscription.id}
           name={subscription.name}

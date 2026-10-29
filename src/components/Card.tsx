@@ -2,13 +2,10 @@ import * as React from 'react'
 import { cva } from 'class-variance-authority'
 import type { VariantProps } from 'class-variance-authority'
 
-const cardVariants = cva('rounded-2xl', {
+const cardVariants = cva('rounded-2xl border border-border', {
   variants: {
     variant: {
-      default: 'bg-surface',
-      info: 'bg-surface-info',
-      danger: 'bg-surface-danger',
-      success: 'bg-surface-success',
+      default: 'bg-card',
     },
   },
   defaultVariants: {
