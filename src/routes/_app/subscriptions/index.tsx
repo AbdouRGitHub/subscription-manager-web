@@ -13,7 +13,7 @@ function RouteComponent() {
         <h1 className="text-4xl font-extrabold">Abonnements</h1>
         <div className="flex flex-col items-center justify-center">
           <Button variant={'primary'} onClick={() => {}}>
-            <CirclePlus size={30} strokeWidth={3} />
+            <CirclePlus size={20} strokeWidth={3} />
             <span className="text-sm">Ajouter un abonnement</span>
           </Button>
         </div>

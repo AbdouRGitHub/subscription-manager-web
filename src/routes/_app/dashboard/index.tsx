@@ -8,6 +8,7 @@ import type { Dashboard } from '#/features/dashboard/api/dashboard.types.ts'
 import { AnnualExpensesStats } from '#/features/dashboard/components/AnnualExpensesStats.tsx'
 import { MonthlyExpensesByCategory } from '#/features/dashboard/components/MonthlyExpensesByCategory.tsx'
 import { NextDeadlines } from '#/features/dashboard/components/NextDeadlines.tsx'
+import { MostExpensiveSubscription } from '#/features/dashboard/components/MostExpensiveSubscription.tsx'
 
 export const Route = createFileRoute('/_app/dashboard/')({
   component: DashBoard,
@@ -25,7 +26,7 @@ function DashBoard() {
             Mardi 15 septembre 2026
           </span>
           <Button variant={'primary'} onClick={() => {}}>
-            <CirclePlus size={30} strokeWidth={3} />
+            <CirclePlus size={20} strokeWidth={3} />
             <span className="text-sm">Ajouter un abonnement</span>
           </Button>
         </div>
@@ -40,7 +41,11 @@ function DashBoard() {
         <Card>
           <AnnualExpensesStats annualExpenses={data.annualExpenses} />
         </Card>
-        <Card className="row-span-3">{/* Le plus cher */}</Card>
+        <Card className="row-span-3">
+          <MostExpensiveSubscription
+            mostExpensiveSubscription={data.mostExpensiveSubscription}
+          />
+        </Card>
 
         <Card className="col-span-2 min-h-0">
           <NextDeadlines nextDeadlines={data.nextDeadlines} />

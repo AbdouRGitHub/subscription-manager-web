@@ -13,6 +13,6 @@ export interface Dashboard {
     amount: number
     percentage: number
   }[]
-  mostExpensiveSubscription: Subscriptions[]
+  mostExpensiveSubscription: Subscriptions
   nextDeadlines: Subscriptions[]
 }

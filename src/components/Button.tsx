@@ -8,18 +8,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: 'bg-button text-button-foreground',
-        secondary: 'bg-[#94ECC9]',
+        secondary: 'bg-[#1C1D22]',
         transparent: 'bg-transparent',
       },
       radius: {
-        default: 'rounded-xl',
         none: 'rounded-none',
-        curved: 'rounded-4xl',
+        xl: 'rounded-xl',
+        lg: 'rounded-lg',
       },
     },
     defaultVariants: {
       variant: 'primary',
-      radius: 'default',
+      radius: 'xl',
     },
   },
 )

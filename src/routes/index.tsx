@@ -24,7 +24,7 @@ function Home() {
           <Link to="/dashboard">
             <Button
               variant="transparent"
-              radius="curved"
+              radius="xl"
               className="border-foreground border-2 font-bold"
             >
               Se connecter
@@ -44,8 +44,8 @@ function Home() {
             </p>
 
             <Button
-              variant="secondary"
-              radius="curved"
+              variant="transparent"
+              radius="xl"
               className="border-foreground w-1/2 border-2 font-bold"
             >
               Créer mon compte
@@ -64,7 +64,7 @@ function Home() {
           <span>@Abdou-Rahmane Sani</span>
           <div className="flex items-center gap-2">
             <span>Confidentialité</span>
-            <span aria-hidden="true" className="h-4 w-px bg-border" />
+            <span aria-hidden="true" className="bg-border h-4 w-px" />
             <span>Contact</span>
           </div>
         </footer>
